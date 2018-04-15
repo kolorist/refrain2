@@ -5,7 +5,7 @@
 #include <helich.h>
 
 namespace refrain2 {
-	typedef helich::Allocator<helich::FreelistScheme, helich::NoTrackingPolicy>	FreelistAllocator;
+	typedef helich::allocator<helich::freelist_scheme, helich::no_tracking_policy>	FreelistAllocator;
 
 	extern FreelistAllocator					g_TaskAllocator;
 	extern FreelistAllocator					g_TaskDataAllocator;
