@@ -26,7 +26,7 @@ namespace refrain2 {
 		c8										pm_Name[256];
 		InstructionType							pm_Instruction;
 		voidptr									pm_Data;
-		std::atomic_uint32_t*					pm_Counter;
+		std::atomic<u32>*						pm_Counter;
 		s32										pm_RestrictedQueueIdx;
 	};
 

@@ -26,10 +26,10 @@ namespace refrain2 {
 			void								PushTask(Task& newTask);
 			void								PushTask(InstructionType taskIntruction, voidptr data,
 													const s32 restrictedIdx = NO_RESTRICTED, const_cstr taskName = nullptr,
-													std::atomic_uint32_t* counter = nullptr);
+													std::atomic<u32>* counter = nullptr);
 			void								PushTasks(InstructionType taskInstruction, voidptr data,
 													const u32 tasksCount, const s32 restrictedIdx = NO_RESTRICTED,
-													const_cstr taskName = nullptr, std::atomic_uint32_t* counter = nullptr);
+													const_cstr taskName = nullptr, std::atomic<u32>* counter = nullptr);
 
 		public:
 			u32									pm_RegularWorkersCount;
@@ -46,8 +46,8 @@ namespace refrain2 {
 	// wait for counter
 	// TODO: only Orchestral thread can use those function for now,
 	// 		we have to make it usable for TaskingThread as well
-	void										BusyWaitForCounter(std::atomic_uint32_t& counter, const u32 value);
-	void										FreeWaitForCounter(std::atomic_uint32_t& counter, const u32 value);
+	void										BusyWaitForCounter(std::atomic<u32>& counter, const u32 value);
+	void										FreeWaitForCounter(std::atomic<u32>& counter, const u32 value);
 	// -----------------------------------------
 
 }

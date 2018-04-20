@@ -64,7 +64,7 @@ namespace refrain2 {
 
 	void TaskManager::PushTask(InstructionType taskInstruction, voidptr data,
 			const s32 restrictedIdx /* = NO_RESTRICTED */, const_cstr taskName /* = nullptr */,
-            std::atomic_uint32_t* counter /* = nullptr */)
+            std::atomic<u32>* counter /* = nullptr */)
 	{
 		Task newTask;
 		newTask.pm_Instruction = taskInstruction;
@@ -80,7 +80,7 @@ namespace refrain2 {
 
 	void TaskManager::PushTasks(InstructionType taskInstruction, voidptr data,
 			const u32 tasksCount, const s32 restrictedIdx /* = NO_RESTRICTED */,
-            const_cstr taskName /* = nullptr */, std::atomic_uint32_t* counter /* = nullptr */)
+            const_cstr taskName /* = nullptr */, std::atomic<u32>* counter /* = nullptr */)
 	{
 		for (u32 i = 0; i < tasksCount; i++)
 			PushTask(taskInstruction, data, restrictedIdx, taskName, counter);
@@ -88,12 +88,12 @@ namespace refrain2 {
 
 	// -----------------------------------------
 	// wait for counter
-	void BusyWaitForCounter(std::atomic_uint32_t& counter, const u32 value)
+	void BusyWaitForCounter(std::atomic<u32>& counter, const u32 value)
 	{
 		while (counter > value);
 	}
 
-	void FreeWaitForCounter(std::atomic_uint32_t& counter, const u32 value)
+	void FreeWaitForCounter(std::atomic<u32>& counter, const u32 value)
 	{
 		while (counter > value);
 #if 0
