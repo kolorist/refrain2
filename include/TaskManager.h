@@ -48,6 +48,7 @@ namespace refrain2 {
 	// 		we have to make it usable for TaskingThread as well
 	void										BusyWaitForCounter(std::atomic<u32>& counter, const u32 value);
 	void										FreeWaitForCounter(std::atomic<u32>& counter, const u32 value);
+	const bool									CheckForCounter(std::atomic<u32>& counter, const u32 value);
 	// -----------------------------------------
 
 }

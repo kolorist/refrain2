@@ -114,4 +114,10 @@ namespace refrain2 {
 #endif
 	}
 
+	const bool CheckForCounter(std::atomic<u32>& counter, const u32 value)
+	{
+		u32 expected = value;
+		return (counter.compare_exchange_strong(expected, value));
+	}
+
 }
