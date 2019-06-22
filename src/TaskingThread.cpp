@@ -10,7 +10,11 @@ namespace refrain2 {
 	void TaskingThreadEntryPoint(voidptr data) {
 		TaskingThread* wThread = (TaskingThread*)data;
 		clover::Initialize(wThread->pm_Name, clover::LogLevel::Verbose);
+#if defined(PLATFORM_WINDOWS)
 		clover::InitializeVSOutput(wThread->pm_Name, clover::LogLevel::Verbose);
+#else
+		clover::InitializeADBOutput(wThread->pm_Name, clover::LogLevel::Verbose);
+#endif
 		CLOVER_VERBOSE("%s started", wThread->pm_Name);
 		//clover::InitializeTracer(0, wThread->pm_Name);
 		//clover::TracePrint("begin tasking thread");
