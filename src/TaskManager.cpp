@@ -1,6 +1,7 @@
 #include "TaskManager.h"
 
 #include <clover.h>
+#include <floral/math/utils.h>
 
 #include "Globals.h"
 #include "Memory.h"
@@ -21,7 +22,7 @@ namespace refrain2 {
 
 	void TaskManager::Initialize(const u32 workersCount)
 	{
-		pm_RegularWorkersCount = workersCount;
+		pm_RegularWorkersCount = floral::min(workersCount, MAX_REGULAR_WORKERS);
 		g_TaskManager = this;
 		for (u32 i = 0; i < pm_RegularWorkersCount; i++) {
 			m_WorkerThreads[i].pm_RefTaskQueue = &m_RegularTaskQueue;

@@ -10,7 +10,7 @@
 namespace refrain2 {
 
 #define RESTRICTED_THREADS_COUNT				1
-#define MAX_REGULAR_WORKERS						8
+static constexpr u32 MAX_REGULAR_WORKERS = 8;
 
 #define NO_RESTRICTED							-1
 
